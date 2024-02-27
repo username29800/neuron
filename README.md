@@ -33,6 +33,7 @@ This text editor provides a simple command-line interface for basic text editing
 - **i**: Insert the current line into a specified line. Replaces the original line.
 - **ll**: Print the last line number.
 - **h** or **;**: Display help.(incomplete)
+- **n**: insert a newline at the cursor
 
 ## Additional Commands
 
@@ -45,7 +46,7 @@ This text editor provides a simple command-line interface for basic text editing
 - **v**: Move a line to a specified position. Replaces the original line.
 - **c**: Copy and paste a line to a specified position. Replaces the original line.
 - **e**: Empty the current line.(irreversible)
-- **b**: Backup lines after a specified line.
+- **b**: Backup lines after a specified line. Useful for appending from the middle of the document.
 - **bb**: Restore backed-up lines.
 - **jn**: Join lines within a specified range without a newline.
 - **jnn**: Join lines specified in a list without a newline.
