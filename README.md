@@ -65,12 +65,12 @@ This text editor provides a simple command-line interface for basic text editing
 **Note:** Replace `ed('command')` with the actual 'command' to execute.
 
 ## Example Usage
-- To append text to the current line: `ed('a')`.
-- To print the current line: `ed('l')`.
-- To set the pointer: `ed('p')`.
-- To delete characters before the cursor: `ed('x')`.
-- To delete the specified line: `ed('d')`.
-- To insert a new line after the specified line: `ed('o')`.
-- To quit the editor: `ed('quit')`.
+- To append text to the current line: a [content]
+- To print the current line: l
+- To set the pointer: p [column]
+- To delete characters before the cursor: x [number of chars to erase]
+- To delete the specified line: d [line number]
+- To insert a new line after the specified line: o [line number]
+- To quit the editor: quit
 
 Refer to the commands above for additional functionalities and examples.
