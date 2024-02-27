@@ -52,7 +52,7 @@ This text editor provides a simple command-line interface for basic text editing
 - **f**: Search and replace within a given count.
 - **g**: Search and replace all occurrences.
 
-**Note:** Replace `ed('command')` with the actual command to execute.
+**Note:** Replace `ed('command')` with the actual 'command' to execute.
 
 ## Example Usage
 - To append text to the current line: `ed('a')`.
