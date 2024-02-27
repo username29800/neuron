@@ -251,28 +251,28 @@ ol - Append to Line then Append to Document''')
       pa=ap.split()
       uc=0
       for i in ll[int(pa[0])-1:int(pa[1])]:
-        uc+=i
+        uc+=float(i)
       ll[int(pa[0])-1]=str(uc)
       del ll[int(pa[0]):int(pa[1])]
     if ed('xx'): #subtract
       pa=ap.split()
       uc=ll[int(pa[0])-1]
       for i in ll[int(pa[0]):int(pa[1])]:
-        uc-=i
+        uc-=float(i)
       ll[int(pa[0])-1]=str(uc)
       del ll[int(pa[0]):int(pa[1])]
     if ed('tt'): #multiply
       pa=ap.split()
       uc=1
       for i in ll[int(pa[0])-1:int(pa[1])]:
-        uc=uc*i
+        uc=uc*float(i)
       ll[int(pa[0])-1]=str(uc)
       del ll[int(pa[0]):int(pa[1])]
     if ed('dd'): #divide
       pa=ap.split()
       uc=ll[int(pa[0])-1]
       for i in ll[int(pa[0]):int(pa[1])]:
-        uc=uc/i
+        uc=uc/float(i)
       ll[int(pa[0])-1]=str(uc)
       del ll[int(pa[0]):int(pa[1])]
   except Exception as xp:
