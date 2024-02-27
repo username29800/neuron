@@ -276,6 +276,6 @@ ol - Append to Line then Append to Document''')
       ll[int(pa[0])-1]=str(uc)
       del ll[int(pa[0]):int(pa[1])]
     if ed('cx'): #convert to integer
-      ll[int(ap)]=str(int(ll[int(ap)]))
+      ll[int(ap)-1]=str(int(float(ll[int(ap)-1])))
   except Exception as xp:
     print(xp)
