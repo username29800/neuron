@@ -1,10 +1,10 @@
 # neuron
-a line editor,
-a sticky note for simple things,
-a typewriter for writing,
-a text editor for coding,
-and a simple calculator.
-An editor which helps you think.
+- a line-oriented editor,
+- a sticky note for simple things,
+- a typewriter for writing,
+- a text editor for coding,
+- and a simple calculator.
+- **An editor which helps you think.**
 
 ## Introduction
 This text editor provides a simple command-line interface for basic text editing tasks. Below is a manual explaining the available commands and their functionalities.
