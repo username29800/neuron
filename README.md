@@ -2,7 +2,7 @@
 - a line-oriented editor,
 - a sticky note for simple things,
 - a typewriter for writing,
-- a text editor for writing down your code,
+- a text editor for programming,
 - and a simple calculator.
 - **An editor which helps you think.**
 
