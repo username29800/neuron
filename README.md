@@ -33,7 +33,7 @@ This text editor provides a simple command-line interface for basic text editing
 - **i**: Insert the current line into a specified line. Replaces the original line.
 - **ll**: Print the last line number.
 - **h** or **;**: Display help.(incomplete)
-- **n**: insert a newline at the cursor
+- **nn**: insert a newline at the cursor
 
 ## Additional Commands
 
