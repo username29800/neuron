@@ -1,9 +1,14 @@
 # neuron
-a line editor which helps you think
+a line editor,
+a sticky note for simple things,
+a typewriter for writing,
+a text editor for coding,
+and a simple calculator.
+An editor which helps you think.
 
 ## Introduction
 This text editor provides a simple command-line interface for basic text editing tasks. Below is a manual explaining the available commands and their functionalities.
-* neuron will provide a simple calculator soon.
+* neuron is provided WITHOUT any warranty.
 
 ## Editor Commands
 
@@ -34,6 +39,10 @@ This text editor provides a simple command-line interface for basic text editing
 - **ll**: Print the last line number.
 - **h** or **;**: Display help.(incomplete)
 - **nn**: insert a newline at the cursor
+- **aa**: add numbers in the specified range of lines.
+- **xx**: subtract.
+- **tt**: multiply.
+- **dd**: divide.
 
 ## Additional Commands
 
