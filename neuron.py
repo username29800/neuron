@@ -245,7 +245,7 @@ ol - Append to Line then Append to Document''')
         pc=pc[:-len(pa[0])]+pa[1]
         lc=pc[-1]+lc
         pc=pc[:-1]
-    if ed('n'): #insert newline
+    if ed('nn'): #insert newline
       pc=pc+'\n'
   except Exception as xp:
     print(xp)
