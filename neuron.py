@@ -256,7 +256,7 @@ ol - Append to Line then Append to Document''')
       del ll[int(pa[0]):int(pa[1])]
     if ed('xx'): #subtract
       pa=ap.split()
-      uc=ll[int(pa[0])-1]
+      uc=float(ll[int(pa[0])-1])
       for i in ll[int(pa[0]):int(pa[1])]:
         uc-=float(i)
       ll[int(pa[0])-1]=str(uc)
@@ -270,7 +270,7 @@ ol - Append to Line then Append to Document''')
       del ll[int(pa[0]):int(pa[1])]
     if ed('dd'): #divide
       pa=ap.split()
-      uc=ll[int(pa[0])-1]
+      uc=float(ll[int(pa[0])-1])
       for i in ll[int(pa[0]):int(pa[1])]:
         uc=uc/float(i)
       ll[int(pa[0])-1]=str(uc)
