@@ -1,3 +1,70 @@
+def fusion(particles):
+  arg=[]
+  blk=[]
+  DoInterPret=1
+  BlockDepth=0
+  for p in particles:
+    #print(arg)
+    #print('i:',p,'\nDIP:',DoInterPret)
+    if DoInterPret==0:
+      blk.append(p)
+    if p=='bs':
+      if BlockDepth==0:
+        blk=[]
+      DoInterPret=0 #interpreter switch off
+      BlockDepth+=1
+      #print('D:',BlockDepth)
+      #print('DIP:',DoInterPret)
+    if p=='be':
+      BlockDepth-=1
+      #print('D:',BlockDepth)
+      if BlockDepth<=0:
+        DoInterPret=1
+        del blk[-1]
+        #print('DIP:',DoInterPret)
+    if DoInterPret==1:
+      if p=='if':
+        cc=arg[0]
+        if eval(str(arg[0])):
+          cc=fusion(blk)
+          arg=cc+arg
+          del arg[len(cc)]
+        else:
+          del arg[0]
+      elif p=='rr':
+        cc=arg[0]
+        for i in range(int(arg[0])):
+          arg=fusion(blk)+arg
+        del arg[int(cc)]
+      elif p=='rp':
+        arg=[]
+      elif p=='e':
+        for i in arg[0]:
+          del arg[i]
+      elif p=='o':
+        return(arg)
+      elif p=='comb':
+        arg[0]=str(arg[1])+str(arg[0])
+        del arg[1]
+      elif p=='add':
+        arg[0]=float(arg[0])
+        arg[0]+=float(arg[1])
+        del arg[1]
+      elif p=='sub':
+        arg[0]=float(arg[1])-float(arg[0])
+        del arg[1]
+      elif p=='cut':
+        arg[0]=arg[2][int(arg[1]):int(arg[0])]
+        del arg[1:3]
+      elif p=='sum':
+        s=0
+        for i in arg:
+          s+=int(i)
+        arg=[str(s)]
+      elif p!='be':
+        if p[0]=="'" and p[-1]=="'":
+          p=p[1:-1]
+        arg=[p]+arg
 kwd0=''
 pc=''
 lc=''
@@ -300,5 +367,7 @@ ol - Append to Line then Append to Document''')
       k1=list(kl)
     if ed('ww'): #move keywords to the current line
       pc=pc+' '.join(k1)
+    if ed('fs'): #'fusion' programming language implementation
+      fusion(ll[ap.split()[0]-1:ap.split()[1]])
   except Exception as xp:
     print(xp)
