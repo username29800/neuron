@@ -1,6 +1,6 @@
 # neuron
 - a line-oriented editor,
-- a sticky note for simple things,
+- a sticky note for simple tasks,
 - a typewriter for writing,
 - a text editor for programming,
 - and a simple calculator.
