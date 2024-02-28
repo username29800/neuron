@@ -282,5 +282,21 @@ ol - Append to Line then Append to Document''')
       ll[int(ap)-1]=str(int(float(ll[int(ap)-1])))
     if ed('q'): #keyword init
       k0.extend(ap.split())
+    if ed('z'): #erase a keyword
+      for i in ap.split():
+        k0.remove(i)
+    if ed('zz'): #erase all keywords
+      k0=[]
+      k1=[]
+    if ed('w'): #print keywords
+      print(' '.join(k0))
+      print(' '.join(k1))
+    if ed('r'): #order keywords
+      for i in ap.split():
+        k1.append(k0[int(i)-1])
+    if ed('rr'): #swap keyword lists
+      kl=list(k0)
+      k0=list(k1)
+      k1=list(kl)
   except Exception as xp:
     print(xp)
