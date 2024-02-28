@@ -9,6 +9,7 @@
 ## Introduction
 This text editor provides a simple command-line interface for basic text editing tasks. Below is a manual explaining the available commands and their functionalities.
 * neuron is provided WITHOUT any warranty.
+* IMPORTANT: do NOT press Control-C, otherwise it will forcibly stop the editor.
 
 ## Editor Commands
 
