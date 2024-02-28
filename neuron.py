@@ -366,6 +366,6 @@ ol - Append to Line then Append to Document''')
     if ed('ww'): #move keywords to the current line
       pc=pc+' '.join(k1)
     if ed('fs'): #'fusion' programming language implementation
-      fission(ll[int(ap.split()[0])-1:int(ap.split()[1])])
+      pc=pc+str(''.join(fission(ll[int(ap.split()[0])-1:int(ap.split()[1])])))
   except Exception as xp:
     print(xp)
