@@ -1,4 +1,4 @@
-def fusion(particles):
+def fission(particles):
   arg=[]
   blk=[]
   DoInterPret=1
@@ -26,7 +26,7 @@ def fusion(particles):
       if p=='if':
         cc=arg[0]
         if eval(str(arg[0])):
-          cc=fusion(blk)
+          cc=fission(blk)
           arg=cc+arg
           del arg[len(cc)]
         else:
@@ -34,7 +34,7 @@ def fusion(particles):
       elif p=='rr':
         cc=arg[0]
         for i in range(int(arg[0])):
-          arg=fusion(blk)+arg
+          arg=fission(blk)+arg
         del arg[int(cc)]
       elif p=='rp':
         arg=[]
@@ -61,10 +61,8 @@ def fusion(particles):
         for i in arg:
           s+=int(i)
         arg=[str(s)]
-      elif p!='be':
-        if p[0]=="'" and p[-1]=="'":
-          p=p[1:-1]
-        arg=[p]+arg
+      elif p[:4]=='prep':
+        arg=[p[5:]]+arg
 kwd0=''
 pc=''
 lc=''
@@ -368,6 +366,6 @@ ol - Append to Line then Append to Document''')
     if ed('ww'): #move keywords to the current line
       pc=pc+' '.join(k1)
     if ed('fs'): #'fusion' programming language implementation
-      fusion(ll[ap.split()[0]-1:ap.split()[1]])
+      fission(ll[ap.split()[0]-1:ap.split()[1]])
   except Exception as xp:
     print(xp)
