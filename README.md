@@ -81,3 +81,95 @@ This text editor provides a simple command-line interface for basic text editing
 - To quit the editor: quit
 
 Refer to the commands above for additional functionalities and examples.
+
+# Fission Scripting Language Manual
+
+## Introduction
+The Fission Scripting Language is a simple language designed for scripting within the text editor. It allows users to define and execute custom commands not included in neuron. Below is a beginner's manual explaining the syntax and usage of the Fission Scripting Language.
+
+## Basic syntax
+- line 1: prep (argument; condition, repeat count, constant, etc)
+- line 2: command
+
+- example:
+- prep 10
+- prep 20
+- add
+- o
+
+- output: 30.0
+
+- example 2:
+- prep Hello
+- prep  world
+- comb
+- o
+
+- output: Hello world
+
+- example 3: square of 20
+- bs
+- prep 20
+- o
+- be
+- rr 20
+- sum
+- o
+
+- Remember to run fs (starting index) (ending index) in neuron after you complete the code.
+
+## Commands
+
+### `bs` and `be` - Block Start and Block End
+- `bs`: Marks the beginning of a block.
+- `be`: Marks the end of a block.
+
+### `if` - Conditional Statement
+- Syntax: `if`
+- Executes the block if the specified condition is true.
+
+### `rr` - Repeat Block
+- Syntax: `rr`
+- Repeats the block specified number of times.
+
+### `rp` - Reset Parameters
+- Resets the parameters, clearing any existing values.
+
+### `e` - Eliminate Elements
+- Syntax: `e`
+- Removes elements at the specified indices from the argument list.
+
+### `o` - Output Result
+- Returns the current argument list as the output.
+
+### `comb` - Concatenate Strings
+- Syntax: `comb`
+- Concatenates the first two elements as strings.
+
+### `add` - Add Numbers
+- Syntax: `add`
+- Adds the first two elements as numbers.
+
+### `sub` - Subtract Numbers
+- Syntax: `sub`
+- Subtracts the first element from the second element.
+
+### `cut` - Cut String
+- Syntax: `cut`
+- Extracts a substring from the third element based on the specified start and end indices.
+
+### `sum` - Sum Numbers
+- Syntax: `sum`
+- Sums all the numbers in the argument list.
+
+### `prep` - Prepare Element
+- Syntax: `prep value`
+- Prepares the specified value to add to the argument stack.
+
+## Note
+- The Fission Scripting Language operates on a list of particles, and each particle represents a command or value.
+- Commands `bs` and `be` define blocks of code.
+- Use `if` for conditional statements and `rr` for repeating blocks.
+- Various commands manipulate the argument list (`arg`), such as `e` for eliminating elements, `comb` for concatenating strings, and others for numerical operations.
+
+Experiment with these commands to create custom scripts tailored to your needs within the text editor.
