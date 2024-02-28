@@ -4,7 +4,7 @@
 - a typewriter for writing,
 - a text editor for programming,
 - and a simple calculator.
-- **An editor which helps you think.**
+- **An editor which helps you *think*.**
 
 ## Introduction
 This text editor provides a simple command-line interface for basic text editing tasks. Below is a manual explaining the available commands and their functionalities.
@@ -44,6 +44,14 @@ This text editor provides a simple command-line interface for basic text editing
 - **xx**: subtract.
 - **tt**: multiply.
 - **dd**: divide.
+- **cx**: Convert the current line to an integer.
+- **q**: Add keywords. Keywords are divided by space.
+- **z**: Erase a specific keyword.
+- **zz**: Erase all keywords.
+- **w**: Print keywords.
+- **r**: Select and order keywords by their index numbers.
+- **rr**: Swap keyword lists.
+- **ww**: Move keywords to the cursor in the current line.
 
 ## Additional Commands
 
