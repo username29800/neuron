@@ -298,5 +298,7 @@ ol - Append to Line then Append to Document''')
       kl=list(k0)
       k0=list(k1)
       k1=list(kl)
+    if ed('ww'): #move keywords to the current line
+      pc=pc+' '.join(k1)
   except Exception as xp:
     print(xp)
