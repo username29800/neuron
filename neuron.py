@@ -7,6 +7,9 @@ cp=''
 ap=''
 ii=' '*0
 ll=[]
+k1=[]
+kl=[]
+k0=[]
 bs=[]
 run=1
 def ed(x):
@@ -277,5 +280,7 @@ ol - Append to Line then Append to Document''')
       del ll[int(pa[0]):int(pa[1])]
     if ed('cx'): #convert to integer
       ll[int(ap)-1]=str(int(float(ll[int(ap)-1])))
+    if ed('q'): #keyword init
+      k0.extend(ap.split())
   except Exception as xp:
     print(xp)
