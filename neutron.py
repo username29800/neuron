@@ -246,7 +246,7 @@ while True:
     if ed('str'):
       pc=str(Fstr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('cut'):
-      pc=str(Fstc(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+      pc=str(Fstc(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),NtInput(ll,ap.split()[2])))
     if ed('ssc'):
       pc=str(Fssr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('app'):
