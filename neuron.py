@@ -430,7 +430,7 @@ ol - Append to Line then Append to Document''')
       pc=pc+str(float(NtInput(ll,ap.split()[0]))/float(NtInput(ll,ap.split()[1])))
     if ed('dr'):
       pc=pc+str(FsDr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
-    if ed('xx'):
+    if ed('xt'):
       pc=pc+str(Fexp(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('str'):
       pc=pc+str(Fstr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
