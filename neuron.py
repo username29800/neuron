@@ -444,7 +444,7 @@ ol - Append to Line then Append to Document''')
       lf=''
       for i in range(len(ll)):
         if str(ap) in ll[i]:
-          lf=lf+ll[i]+' '
+          lf=lf+str(i+1)+' '
       lf=lf[-1]
       print(lf)
   except Exception as xp:
