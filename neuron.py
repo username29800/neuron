@@ -25,9 +25,19 @@ def Fexp(a,b):
   for i in range(int(b)):
     c=FsMx(a,c)
   return c
+def Fstr(a,b):
+  fs=[f'prep {a}',f'prep {b}','comb','o']
+  return(fission(fs)[0])
+def Fstc(istr,b,c):
+  fs=[f'prep {istr}',f'prep {b}',f'prep {c}','cut','o']
+  return(fission(fs)[0]) 
+def Fssr(a,b):
+  fs=[f'prep {a} ',f'prep {b}','comb','o']
+  return(fission(fs)[0])
 def fission(particles):
   arg=[]
   blk=[]
+  ins=''
   DoInterPret=1
   BlockDepth=0
   for p in particles:
@@ -50,6 +60,8 @@ def fission(particles):
         del blk[-1]
         #print('DIP:',DoInterPret)
     if DoInterPret==1:
+      if p=='rt':
+        p=str(ins)
       if p=='if':
         cc=arg[0]
         if eval(str(arg[0])):
@@ -88,10 +100,21 @@ def fission(particles):
         for i in arg:
           s+=int(i)
         arg=[str(s)]
+      elif p=='rd':
+        ltmp=[]
+        for i in arg[0].split():
+          ltmp.append(arg[int(i)])
+        arg=list(ltmp)
       elif p[:2] in ['Fs','Fe']:
         arg=[eval(p)]+arg
       elif p[:4]=='prep':
         arg=[p[5:]]+arg
+      ins=str(p)
+def NtInput(ll,i1):
+  if ':' in str(i1): #start input with : to read from a line
+    return ll[int(str(i1[1:]))-1]
+  else:
+    return i1
 kwd0=''
 pc=''
 lc=''
@@ -394,8 +417,28 @@ ol - Append to Line then Append to Document''')
       k1=list(kl)
     if ed('ww'): #move keywords to the current line
       pc=pc+' '.join(k1)
-    if ed('fs'): #'fusion' programming language implementation
+    if ed('fs'): #'fission' programming language implementation
       for i in fission(ll[int(ap.split()[0])-1:int(ap.split()[1])]):
         pc=pc+str(i)
+    if ed('add'):
+      pc=pc+str(FsAdd(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('sub'):
+      pc=pc+str(FsSub(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('tx'):
+      pc=pc+str(FsMx(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('dd'):
+      pc=pc+str(float(NtInput(ll,ap.split()[0]))/float(NtInput(ll,ap.split()[1])))
+    if ed('dr'):
+      pc=pc+str(FsDr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('xx'):
+      pc=pc+str(Fexp(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('str'):
+      pc=pc+str(Fstr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('cut'):
+      pc=pc+str(Fstc(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('ssc'):
+      pc=pc+str(Fssr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
+    if ed('app'):
+      pc=pc+ap
   except Exception as xp:
     print(xp)
