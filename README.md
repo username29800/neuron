@@ -230,3 +230,95 @@ The Reactor is a pre-fission processor designed to simplify the usage of the Fis
 
 ## Summary
 These functions allow you to perform common mathematical operations using a simplified interface. Use them to interact with the Fission Scripting Language without directly handling the underlying complexities.
+
+# Neutron Text Editor Manual
+
+## Introduction
+
+Neutron combines the power of a simple text editing interface of Neuron with a pre-fissionscript processor called the Reactor, which simplifies the usage of the Fission Scripting Language. The Fission Scripting Language allows users to execute commands and manipulate text using concise and expressive syntax.
+
+## Getting Started
+
+### Basic Commands
+
+- `l`: Print the current line.
+- `d`: Delete line(s) specified in the list.
+- `k`: Kill lines in the specified range.
+- `o`: Insert a line at the specified position.
+- `lo`: Append a line at the end.
+- `n`: Set the current line to the specified line.
+- `l.`: Print all lines with index.
+- `lm`: Print lines within a specified range with index.
+- `ml`: Print lines within a specified range without index.
+- `.l`: Print all lines without index.
+- `quit`: Exit the editor.
+- `of <filename>`: Open a file and load its content into the editor.
+- `wf <filename>`: Write the editor content to a file.
+- `ecl`: Clear all editor lines.
+- `m <line_number>`: Copy the current line to the specified line.
+- `i <line_number>`: Insert content into the specified line.
+- `ll`: Print the last line number.
+- `ii <indentation>`: Set auto indentation.
+
+### Advanced Commands
+
+- `cx`: Convert the current line to an integer.
+- `q <keywords>`: Initialize keywords.
+- `z <keyword>`: Erase a keyword.
+- `zz`: Erase all keywords.
+- `w`: Print current keywords.
+- `r <order>`: Order keywords based on the specified order.
+- `rr`: Swap keyword lists.
+- `ww`: Move keywords to the current line.
+- `fs <start> <end>`: Execute Fission Script on specified lines.
+
+### Fission Scripting Language Integration
+
+- `add <a> <b>`: Add two numbers.
+- `sub <a> <b>`: Subtract one number from another.
+- `tx <a> <b>`: Multiply two numbers.
+- `dd <a> <b>`: Divide one number by another.
+- `dr <a> <b>`: Divide one number by another, returning the remainder.
+- `xx <a> <b>`: Raise a number to the power of another.
+- `str <a> <b>`: Concatenate two strings.
+- `cut <string> <start> <end>`: Cut a substring from a string.
+- `ssc <string1> <string2>`: Concatenate two strings with a space.
+
+### Fission Scripting Language Functions
+
+- `FsAdd(a, b)`: Add two numbers.
+- `FsSub(a, b)`: Subtract one number from another.
+- `FsMx(a, b)`: Multiply two numbers.
+- `FsDv(a, b)`: Divide one number by another, returning the quotient.
+- `FsDr(a, b)`: Divide one number by another, returning the remainder.
+- `Fexp(a, b)`: Raise a number to the power of another.
+- `Fstr(a, b)`: Concatenate two strings.
+- `Fstc(istr, b, c)`: Cut a substring from a string.
+- `Fssr(a, b)`: Concatenate two strings with a space.
+
+## Example Usage
+
+```plaintext
+> l
+> lo
+> n 1
+> l
+> fs 1 2
+> add 5 3
+> sub 10 4
+> tx 3 5
+> dd 20 4
+> dr 15 7
+> xx 2 3
+> str Hello World
+> cut World! 7 12
+> ssc Hello, World!
+> ww
+> quit
+```
+
+## Notes
+
+- Use `:n` to reference the nth line in the editor.
+- Fission Scripting Language functions are available for more complex operations.
+- Combine Fission commands with text editor commands for powerful text manipulation.
