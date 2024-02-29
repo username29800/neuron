@@ -181,6 +181,10 @@ Experiment with these commands to create custom scripts tailored to your needs w
 The Reactor is a pre-fission processor designed to simplify the usage of the Fission Scripting Language. It provides functions for common mathematical operations and encapsulates the complexities of interacting with the Fission language. Below is a manual explaining the functions available in the Reactor.
 
 ## Functions
+- usage:
+- line 1: reactor function (Fs___)
+- line 2: fission language code(example: 'o')
+- **Replace lines of fission script with just a few reactor functions.**
 
 ### `FsAdd(a, b)`
 - Adds two numbers.
