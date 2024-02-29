@@ -440,5 +440,12 @@ ol - Append to Line then Append to Document''')
       pc=pc+str(Fssr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('app'):
       pc=pc+ap
+    if ed('fl'): #find from lines
+      lf=''
+      for i in range(len(ll)):
+        if str(ap) in ll[i]:
+          lf=lf+ll[i]+' '
+      lf=lf[-1]
+      print(lf)
   except Exception as xp:
     print(xp)
