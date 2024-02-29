@@ -1,8 +1,3 @@
-def fission(particles):
-  arg=[]
-  blk=[]
-  DoInterPret=1
-  BlockDepth=0
 # reactor (pre-fission processor)
 def FsAdd(a,b):
   fs=[f'prep {a}',f'prep {b}','add','o']
