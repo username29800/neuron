@@ -91,7 +91,7 @@ The Fission Scripting Language is a simple language designed for scripting withi
 - line 1: prep (argument; condition, repeat count, constant, etc)
 - line 2: command
 
-- example:
+### example:
 - prep 10
 - prep 20
 - add
@@ -99,7 +99,7 @@ The Fission Scripting Language is a simple language designed for scripting withi
 
 - output: 30.0
 
-- example 2:
+### example 2:
 - prep Hello
 - prep  world
 - comb
@@ -107,12 +107,13 @@ The Fission Scripting Language is a simple language designed for scripting withi
 
 - output: Hello world
 
-- example 3: square of 20
+### example 3: square of 20
 - bs
 - prep 20
 - o
 - be
-- rr 20
+- prep 20
+- rr
 - sum
 - o
 
