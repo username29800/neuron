@@ -174,3 +174,55 @@ The Fission Scripting Language is a simple language designed for scripting withi
 - Various commands manipulate the argument list (`arg`), such as `e` for eliminating elements, `comb` for concatenating strings, and others for numerical operations.
 
 Experiment with these commands to create custom scripts tailored to your needs within the text editor.
+
+# Reactor (Pre-Fission Processor) Manual
+
+## Introduction
+The Reactor is a pre-fission processor designed to simplify the usage of the Fission Scripting Language. It provides functions for common mathematical operations and encapsulates the complexities of interacting with the Fission language. Below is a manual explaining the functions available in the Reactor.
+
+## Functions
+
+### `FsAdd(a, b)`
+- Adds two numbers.
+- Parameters:
+  - `a`: First number.
+  - `b`: Second number.
+- Returns the result of the addition.
+
+### `FsSub(a, b)`
+- Subtracts one number from another.
+- Parameters:
+  - `a`: The number to be subtracted from.
+  - `b`: The number to subtract.
+- Returns the result of the subtraction.
+
+### `FsMx(a, b)`
+- Multiplies two numbers.
+- Parameters:
+  - `a`: First number.
+  - `b`: Second number.
+- Returns the result of the multiplication.
+
+### `FsDv(a, b)`
+- Divides one number by another, returning the quotient.
+- Parameters:
+  - `a`: The dividend.
+  - `b`: The divisor.
+- Returns the quotient.
+
+### `FsDr(a, b)`
+- Divides one number by another, returning the remainder.
+- Parameters:
+  - `a`: The dividend.
+  - `b`: The divisor.
+- Returns the remainder.
+
+### `Fexp(a, b)`
+- Raises a number to the power of another.
+- Parameters:
+  - `a`: The base.
+  - `b`: The exponent.
+- Returns the result of the exponentiation.
+
+## Summary
+These functions allow you to perform common mathematical operations using a simplified interface. Use them to interact with the Fission Scripting Language without directly handling the underlying complexities.
