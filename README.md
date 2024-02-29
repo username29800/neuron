@@ -279,7 +279,7 @@ Neutron combines the power of a simple text editing interface of Neuron with a p
 - `tx <a> <b>`: Multiply two numbers.
 - `dd <a> <b>`: Divide one number by another.
 - `dr <a> <b>`: Divide one number by another, returning the remainder.
-- `xx <a> <b>`: Raise a number to the power of another.
+- `xx <a> <b>`: Raise a number to the power of another. (xt in neuron)
 - `str <a> <b>`: Concatenate two strings.
 - `cut <string> <start> <end>`: Cut a substring from a string.
 - `ssc <string1> <string2>`: Concatenate two strings with a space.
