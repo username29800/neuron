@@ -3,6 +3,38 @@ def fission(particles):
   blk=[]
   DoInterPret=1
   BlockDepth=0
+# reactor (pre-fission processor)
+def FsAdd(a,b):
+  fs=[f'prep {a}',f'prep {b}','add','o']
+  return(fission(fs)[0])
+def FsSub(a,b):
+  fs=[f'prep {a}',f'prep {b}','sub','o']
+  return(fission(fs)[0])
+def FsMx(a,b):
+  fs=['bs',f'prep {a}','o','be',f'prep {b}','rr','sum','o']
+  return(fission(fs)[0])
+def FsDv(a,b):
+  c=0
+  while a>=b:
+    fs=[f'prep {a}',f'prep {b}','sub','o']
+    a=fission(fs)[0]
+    c+=1
+  return c
+def FsDr(a,b):
+  while a>=b:
+    fs=[f'prep {a}',f'prep {b}','sub','o']
+    a=fission(fs)[0]
+  return a
+def Fexp(a,b):
+  c=1
+  for i in range(int(b)):
+    c=FsMx(a,c)
+  return c
+def fission(particles):
+  arg=[]
+  blk=[]
+  DoInterPret=1
+  BlockDepth=0
   for p in particles:
     #print(arg)
     #print('i:',p,'\nDIP:',DoInterPret)
@@ -61,6 +93,8 @@ def fission(particles):
         for i in arg:
           s+=int(i)
         arg=[str(s)]
+      elif p[:2] in ['Fs','Fe']:
+        arg=[eval(p)]+arg
       elif p[:4]=='prep':
         arg=[p[5:]]+arg
 kwd0=''
