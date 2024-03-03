@@ -1,15 +1,9 @@
 def oc(inst,a0,a1,a2,r):
-  if inst=='a':
-    r.append(a0+a1)
-  elif inst=='s':
-    r.append(a0-a1)
-  elif inst=='m':
+  if inst=='m':
     p=0
     for k in range(a1):
       p+=a0
     r.append(p)
-  elif inst=='d':
-    r.append(oc('r',a0,a1,a2,[])[0])
   elif inst=='r':
     a=a0
     q=0
@@ -32,8 +26,6 @@ def oc(inst,a0,a1,a2,r):
            t=t+str(s)[i]
         r.append(float('0.'+'0'*(q-1)+t))
         r.append(a-(a1*float('0.'+'0'*(q-1)+t)))
-  elif inst=='de':
-    r.append(a0/a1)
   elif inst=='e':
     p=1
     for i in range(a1):
@@ -352,15 +344,13 @@ ol - Append to Line then Append to Document''')
     if ed('sub'):
       pc=pc+str(NtInput(ll,ap.split()[0])-NtInput(ll,ap.split()[1]))
     if ed('tx'):
-      pc=pc+str(oc('m',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
+      pc=pc+str(NtInput(ll,ap.split()[0])*NtInput(ll,ap.split()[1]))
     if ed('dd'):
       pc=pc+str(float(NtInput(ll,ap.split()[0]))/float(NtInput(ll,ap.split()[1])))
     if ed('dr'):
       pc=pc+str(oc('r',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
     if ed('xt'):
       pc=pc+str(oc('e',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
-    if ed('str'):
-      pc=pc+str(oc('a',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
     if ed('cut'):
       pc=pc+str(NtInput(ll,ap.split()[0])[NtInput(ll,ap.split()[1]):NtInput(ll,ap.split()[2])])
     if ed('ssc'):
