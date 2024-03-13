@@ -1,45 +1,115 @@
-def oc(inst,a0,a1,a2,r):
-  if inst=='a':
-    r.append(a0+a1)
-  elif inst=='s':
-    r.append(a0-a1)
-  elif inst=='m':
-    p=0
-    for k in range(a1):
-      p+=a0
-    r.append(p)
-  elif inst=='d':
-    r.append(oc('r',a0,a1,a2,[])[0])
-  elif inst=='r':
-    a=a0
-    q=0
-    p=0
-    if a0<a1:
-      s=a0
-      while a0<a1:
-        a0=oc('m',a0,10,0,[])[0]
-        q+=1
-      t=''
-      while a0>0:
-        a0-=a1
-        p+=1
-    if p==0:
-      r.append(p)
-      r.append(a-(a1*p))
-    else:
-      for i in range(len(str(s))):
-        if str(s)[i]!='.':
-           t=t+str(s)[i]
-        r.append(float('0.'+'0'*(q-1)+t))
-        r.append(a-(a1*float('0.'+'0'*(q-1)+t)))
-  elif inst=='de':
-    r.append(a0/a1)
-  elif inst=='e':
-    p=1
-    for i in range(a1):
-      p=oc('m',p,a0,0,[])[0]
-    r.append(p)
-  return r
+# reactor (pre-fission processor)
+def FsAdd(a,b):
+  fs=[f'prep {a}',f'prep {b}','add','o']
+  return(fission(fs)[0])
+def FsSub(a,b):
+  fs=[f'prep {a}',f'prep {b}','sub','o']
+  return(fission(fs)[0])
+def FsMx(a,b):
+  fs=['bs',f'prep {a}','o','be',f'prep {b}','rr','sum','o']
+  return(fission(fs)[0])
+def FsDv(a,b):
+  c=0
+  while a>=b:
+    fs=[f'prep {a}',f'prep {b}','sub','o']
+    a=fission(fs)[0]
+    c+=1
+  return c
+def FsDr(a,b):
+  while a>=b:
+    fs=[f'prep {a}',f'prep {b}','sub','o']
+    a=fission(fs)[0]
+  return a
+def Fexp(a,b):
+  c=1
+  for i in range(int(b)):
+    c=FsMx(a,c)
+  return c
+def Fstr(a,b):
+  fs=[f'prep {a}',f'prep {b}','comb','o']
+  return(fission(fs)[0])
+def Fstc(istr,b,c):
+  fs=[f'prep {istr}',f'prep {b}',f'prep {c}','cut','o']
+  return(fission(fs)[0]) 
+def Fssr(a,b):
+  fs=[f'prep {a} ',f'prep {b}','comb','o']
+  return(fission(fs)[0])
+def fission(particles):
+  arg=[]
+  blk=[]
+  ins=''
+  DoInterPret=1
+  BlockDepth=0
+  for p in particles:
+    #print(arg)
+    #print('i:',p,'\nDIP:',DoInterPret)
+    if DoInterPret==0:
+      blk.append(p)
+    if p=='bs':
+      if BlockDepth==0:
+        blk=[]
+      DoInterPret=0 #interpreter switch off
+      BlockDepth+=1
+      #print('D:',BlockDepth)
+      #print('DIP:',DoInterPret)
+    if p=='be':
+      BlockDepth-=1
+      #print('D:',BlockDepth)
+      if BlockDepth<=0:
+        DoInterPret=1
+        del blk[-1]
+        #print('DIP:',DoInterPret)
+    if DoInterPret==1:
+      if p=='rt':
+        p=str(ins)
+      if p=='if':
+        cc=arg[0]
+        if eval(str(arg[0])):
+          cc=fission(blk)
+          arg=cc+arg
+          del arg[len(cc)]
+        else:
+          del arg[0]
+      elif p=='rr':
+        cc=arg[0]
+        for i in range(int(arg[0])):
+          arg=fission(blk)+arg
+        del arg[int(cc)]
+      elif p=='rp':
+        arg=[]
+      elif p=='e':
+        for i in arg[0]:
+          del arg[i]
+      elif p=='o':
+        return(arg)
+      elif p=='comb':
+        arg[0]=str(arg[1])+str(arg[0])
+        del arg[1]
+      elif p=='add':
+        arg[0]=float(arg[0])
+        arg[0]+=float(arg[1])
+        del arg[1]
+      elif p=='sub':
+        arg[0]=float(arg[1])-float(arg[0])
+        del arg[1]
+      elif p=='cut':
+        arg[0]=arg[2][int(arg[1]):int(arg[0])]
+        del arg[1:3]
+      elif p=='sum':
+        s=0
+        for i in arg:
+          s+=int(i)
+        arg=[str(s)]
+      elif p=='rd':
+        ltmp=[]
+        for i in arg[0].split():
+          ltmp.append(arg[int(i)])
+        arg=list(ltmp)
+      elif p[:2] in ['Fs','Fe']:
+        arg=[eval(p)]+arg
+      elif p[:4]=='prep':
+        arg=[p[5:]]+arg
+      ins=str(p)
 def NtInput(ll,i1):
   if ':' in str(i1): #start input with : to read from a line
     return ll[int(str(i1[1:]))-1]
@@ -347,24 +417,27 @@ ol - Append to Line then Append to Document''')
       k1=list(kl)
     if ed('ww'): #move keywords to the current line
       pc=pc+' '.join(k1)
+    if ed('fs'): #'fission' programming language implementation
+      for i in fission(ll[int(ap.split()[0])-1:int(ap.split()[1])]):
+        pc=pc+str(i)
     if ed('add'):
-      pc=pc+str(NtInput(ll,ap.split()[0])+NtInput(ll,ap.split()[1]))
+      pc=pc+str(FsAdd(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('sub'):
-      pc=pc+str(NtInput(ll,ap.split()[0])-NtInput(ll,ap.split()[1]))
+      pc=pc+str(FsSub(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('tx'):
-      pc=pc+str(oc('m',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
+      pc=pc+str(FsMx(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('dd'):
       pc=pc+str(float(NtInput(ll,ap.split()[0]))/float(NtInput(ll,ap.split()[1])))
     if ed('dr'):
-      pc=pc+str(oc('r',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
+      pc=pc+str(FsDr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('xt'):
-      pc=pc+str(oc('e',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
+      pc=pc+str(Fexp(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('str'):
-      pc=pc+str(oc('a',NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),0,[]))
+      pc=pc+str(Fstr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('cut'):
-      pc=pc+str(NtInput(ll,ap.split()[0])[NtInput(ll,ap.split()[1]):NtInput(ll,ap.split()[2])])
+      pc=pc+str(Fstc(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1]),NtInput(ll,ap.split()[2])))
     if ed('ssc'):
-      pc=pc+str(NtInput(ll,ap.split()[0])+' '+NtInput(ll,ap.split()[1]))
+      pc=pc+str(Fssr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('app'):
       pc=pc+ap
     if ed('fl'): #find from lines
