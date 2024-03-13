@@ -52,6 +52,16 @@ This text editor provides a simple command-line interface for basic text editing
 - **r**: Select and order keywords by their index numbers.
 - **rr**: Swap keyword lists.
 - **ww**: Move keywords to the cursor in the current line.
+- `add <a> <b>`: Add two numbers.
+- `sub <a> <b>`: Subtract one number from another.
+- `tx <a> <b>`: Multiply two numbers.
+- `dd <a> <b>`: Divide one number by another.
+- `dr <a> <b>`: Divide one number by another, returning the remainder.
+- `xx <a> <b>`: Raise a number to the power of another. (xt in neuron)
+- `str <a> <b>`: Concatenate two strings.
+- `cut <string> <start> <end>`: Cut a substring from a string.
+- `ssc <string1> <string2>`: Concatenate two strings with a space.
+- 'ed <encoding>': change file encoding. utf-8 by default.
 
 ## Additional Commands
 
