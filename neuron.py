@@ -448,6 +448,6 @@ ol - Append to Line then Append to Document''')
           lf=lf+str(i+1)+' '
       print(lf)
     if ed('ed'): #set encoding
-      enc=str(ap)
+      enc=str(ui[2:])
   except Exception as xp:
     print(xp)
