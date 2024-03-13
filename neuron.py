@@ -128,6 +128,7 @@ k1=[]
 kl=[]
 k0=[]
 bs=[]
+enc='utf-8'
 run=1
 def ed(x):
   if str(cp)==str(x):
@@ -197,14 +198,14 @@ while run:
     if ed('quit'):
       run=0
     if ed('of'): #open file
-      of=open(str(ap),'r')
+      of=open(str(ap),'r',encoding=str(enc))
       ll=of.read().splitlines()
       of.close()
     if ed('wf'): #write to file
       op=''
       for i in ll:
         op=op+str(i)+'\n'
-      wf=open(str(ap),'w')
+      wf=open(str(ap),'w',encoding=str(enc))
       wf.write(op)
       wf.close()
     if ed('ecl'): #clear all editor lines
@@ -446,5 +447,7 @@ ol - Append to Line then Append to Document''')
         if str(ap) in ll[i]:
           lf=lf+str(i+1)+' '
       print(lf)
+    if ed('ed'): #set encoding
+      enc=str(ap)
   except Exception as xp:
     print(xp)
