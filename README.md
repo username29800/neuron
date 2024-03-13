@@ -61,7 +61,7 @@ This text editor provides a simple command-line interface for basic text editing
 - `str <a> <b>`: Concatenate two strings.
 - `cut <string> <start> <end>`: Cut a substring from a string.
 - `ssc <string1> <string2>`: Concatenate two strings with a space.
-- 'ed <encoding>': change file encoding. utf-8 by default.
+- 'ed \<encoding\>': change file encoding. utf-8 by default.
 
 ## Additional Commands
 
