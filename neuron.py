@@ -454,7 +454,8 @@ ol - Append to Line then Append to Document''')
       buf.append(ll)
       ll=[]
     if ed('bs'):
-      ll=buf[int(ap)]
+      ll=list(buf[int(ap)])
+      del buf[int(ap)]
     if ed('ab'):
       ll.extend(buf[int(ap)])
     if ed('b.'):
