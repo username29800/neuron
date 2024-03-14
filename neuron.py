@@ -460,7 +460,7 @@ ol - Append to Line then Append to Document''')
       ll.extend(buf[int(ap)])
     if ed('b.'):
       print(buf[int(ap)])
-    if ed('bb'):
+    if ed('bc'):
       del buf[int(ap)]
   except Exception as xp:
     print(xp)
