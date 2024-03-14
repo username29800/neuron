@@ -62,9 +62,11 @@ This text editor provides a simple command-line interface for basic text editing
 - `cut <string> <start> <end>`: Cut a substring from a string.
 - `ssc <string1> <string2>`: Concatenate two strings with a space.
 - 'ed \<encoding\>': change file encoding. utf-8 by default.
-
-## Additional Commands
-
+- 'sb': save current buffer.
+- 'bs': load the specified buffer. req: buffer index number
+- 'b.': print the specified buffer. req: same as the above.
+- 'ab': append the specified buffer after current buffer.
+- 'bb': Delete a buffer.
 - **ol**: Append input to the document.
 - **ii**: Set auto indentation.
 - **j**: Join lines within a specified range.
