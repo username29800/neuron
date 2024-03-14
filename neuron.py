@@ -128,6 +128,7 @@ k1=[]
 kl=[]
 k0=[]
 bs=[]
+buf=[]
 enc='utf-8'
 run=1
 def ed(x):
@@ -449,5 +450,16 @@ ol - Append to Line then Append to Document''')
       print(lf)
     if ed('ed'): #set encoding
       enc=str(ui[2:])
+    if ed('sb'):
+      buf.append(ll)
+      ll=[]
+    if ed('bs'):
+      ll=buf[int(ap)]
+    if ed('ab'):
+      ll.extend(buf[int(ap)])
+    if ed('b.'):
+      print(buf[int(ap)])
+    if ed('bb'):
+      del buf[int(ap)]
   except Exception as xp:
     print(xp)
