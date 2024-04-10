@@ -42,11 +42,11 @@ This text editor provides a simple command-line interface for basic text editing
 - lo: Append a new line at the end of the document.
 - y: Yank (copy) the specified line.
 - e: Empty the current line.(irreversible)
+- ol: Append input to the document.
 
 ### File Operations
 - of: Open a file for editing.
 - wf: Write the current document to a file(note: this could overwrite an existing file).
-- ol: Append input to the document.
 - 'sb': Save current buffer.
 - 'bs': Load the specified buffer. Req: buffer index number.
 - 'b.': Print the specified buffer. Req: same as the above.
