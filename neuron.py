@@ -261,34 +261,25 @@ while run:
     if ed('ll'): #last line number
       print(len(ll))
     if ed('h') or ed(';'): #help
-      print('''Editor Commands
-
-a - Append to Current Line
-l - Print Current Line
-p - Set Pointer
-x - Delete Characters
-d - Delete Line
-o - Insert Line
-lo - Append Line
-y - Yank (Copy) Line
-n - Set Line
-pi - Paste Into
-l. - Print Lines (Indexed)
-lm - Print Lines (Indexed, Range)
-ml - Print Lines (Not Indexed, Range)
-.l - Print Lines (Not Indexed)
-quit - Quit the Editor
-of - Open File
-wf - Write to File
-ecl - Clear All Editor Lines
-fn - Forward Search with Count
-bn - Backward Search with Count
-pl - Move Pointer to End of Line
-pp - Set Relative Cursor Position
-m - Copy to Line
-i - Insert to Line
-ll - Last Line Number
-ol - Append to Line then Append to Document''')
+      print('''essential commands
+a. add str after cursor
+ol. add str after cursor, then append line to the document
+lo. append current line to the document
+l. review/preview current line
+p. set cursor pos.
+pp. set cursor pos, relatively.
+pl. get last charnum
+'l.'(with dot) lines, with linum
+'.l'(with dot) lines, no linum
+lm.(without dot) lines, with linum and range
+ml.(without dot) lines, no linum, with range
+n. get line of given num
+x. erase n char before cursor
+ll. get last linum
+ii. set auto indentation amount(spaces, not tabs)
+b. cut document after given linum and backup
+bb. restore backup at the end of document
+''')
     if ed('ol'): #append input to the document
       ll.append(ii+pc+str(ui[3:])+lc)
       pc=''
