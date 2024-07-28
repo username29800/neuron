@@ -250,7 +250,7 @@ while True:
     if ed('ssc'):
       pc=str(Fssr(NtInput(ll,ap.split()[0]),NtInput(ll,ap.split()[1])))
     if ed('app'):
-      pc=ap
+      pc+=ap
     if ed('fl'): #find from lines
       lf=''
       for i in range(len(ll)):
